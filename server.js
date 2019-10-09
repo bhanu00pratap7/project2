@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const db = require('./dbconfig');
 const database = require('./database');
 const operations = require('./operations');
+const path = require('path');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -19,6 +20,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/',express.static('public'));
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname,"views"));
+
+app.get('/', function (req, res) {
+    res.render('form')
+})
 
 
 app.post('/signup', function(req, res) {

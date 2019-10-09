@@ -7,7 +7,7 @@ function encrypt(email, password, cb) {
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(password, salt, function(err, hash) {
 
-            database.signUp(email, hash, function(data) {
+            database.signup(email, hash, function(data) {
                 cb(data);
 
             })

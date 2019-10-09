@@ -11,8 +11,8 @@ function connectDB(){
     connection.connect();
 }
 
-function signup(email, password, cb){
-    connection.query('insert into signup_table (email ,password) values (?,?) ', [email,hash], function(err,results){
+function signup(email, hash, cb){
+    connection.query('insert into signup_table (email,password) values (?,?) ', [email, hash], function(err,results){
         if(err)
             throw err;
         cb(results);
