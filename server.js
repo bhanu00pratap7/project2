@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const passportLocal = require('passport-local');
-//const session = require('express-session');
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const db = require('./dbconfig');
 const database = require('./database');
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-//app.use(session({secret: 'I have a dog'}));
+app.use(session({secret: 'I have a dog'}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -25,9 +25,13 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname,"views"));
 
 app.get('/', function (req, res) {
-    res.render('form')
+    res.render('landing_page')
 })
 
+
+
+
+app.post('/')
 
 app.post('/signup', function(req, res) {
 

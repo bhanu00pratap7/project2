@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
     password : 'pratap1277',
     database : 'umi_database'
 });
-
+ 
 function connectDB(){
     connection.connect();
 }
